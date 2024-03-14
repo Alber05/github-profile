@@ -1,7 +1,8 @@
 # Github Profile App
 
 
-![image](https://github.com/Alber05/github-profile/assets/92578474/85c4cedf-2a6a-42c5-a427-c7f495913dad)
+![image](https://github.com/Alber05/github-profile/assets/92578474/e749ee12-cd13-4513-ba9b-65b4d122c5e1)
+
 
 
 Aplicación de búsqueda de perfiles Github que utiliza varios endPoints de la API GitHub.
