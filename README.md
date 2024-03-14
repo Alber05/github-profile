@@ -1,8 +1,30 @@
-# React + Vite
+# Github Profile App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+![image](https://github.com/Alber05/github-profile/assets/92578474/85c4cedf-2a6a-42c5-a427-c7f495913dad)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Aplicación de búsqueda de perfiles Github que utiliza varios endPoints de la API GitHub.
+
+- [Instalación](#instalación)
+- [Uso](#uso)
+
+## Instalación
+
+Asegúrate de tener Node.js y npm (o yarn) instalados en tu sistema.
+
+```bash
+# Clona el repositorio
+git clone https://github.com/alber05/github-profile.git
+
+# Entra al directorio del proyecto
+cd tu_proyecto
+
+# Instala las dependencias
+npm install
+
+# Inicia el servidor de desarrollo
+npm run dev
+
+# Construye el proyecto para producción
+npm run build
