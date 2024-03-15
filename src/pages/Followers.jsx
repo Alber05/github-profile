@@ -3,9 +3,9 @@ import Loader from '../components/Loader'
 import FollowerCard from '../components/FollowerCard'
 
 function Followers() {
-    const { userFollowers, isLoading } = useOutletContext()
+    const { userFollowers, followersLoader } = useOutletContext()
 
-    if (isLoading) return <Loader />
+    if (followersLoader) return <Loader />
 
     return (
         <main className='mx-auto mt-6 grid  max-w-[1280px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8'>

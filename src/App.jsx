@@ -1,12 +1,19 @@
 import { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import Browser from './components/Browser'
 
 function App() {
+    const location = useLocation()
     const navigate = useNavigate()
 
     useEffect(() => {
-        navigate('/github')
+        const { pathname } = location
+        // Verificar si la URL tiene un usuario definido
+        const username = pathname.split('/')[1]
+        if (!username) {
+            // Si no hay un nombre de usuario en la URL, redirigir a /github
+            navigate('/github')
+        }
     }, [])
 
     return (

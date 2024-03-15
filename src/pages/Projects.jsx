@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard'
 import Loader from '../components/Loader'
 
 function Projects() {
-    const { userRepositories, isLoading } = useOutletContext()
+    const { userRepositories, projectsLoader } = useOutletContext()
     const [visibleRepositories, setVisibleRepositories] = useState(10)
 
     const showMoreRepositories = () => {
@@ -14,7 +14,7 @@ function Projects() {
         )
     }
 
-    if (isLoading) return <Loader />
+    if (projectsLoader) return <Loader />
 
     return (
         <main className='mx-auto mt-6 grid max-w-[1280px] gap-8 lg:grid-cols-2'>

@@ -5,7 +5,6 @@ import NestingIcon from '../assets/Nesting.svg'
 import ChieldIcon from '../assets/Chield_alt.svg'
 
 function ProjectCard({ repositorie }) {
-    console.log(repositorie)
     return (
         <article className='flex flex-col justify-between gap-4 rounded-lg bg-custom-1D1B48 bg-gradient-to-r from-custom-111729 px-6 py-4 shadow-xl'>
             <header>

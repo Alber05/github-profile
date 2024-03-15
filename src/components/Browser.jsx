@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import SearchIcon from '../assets/Search.svg'
 
 function Browser() {
@@ -7,6 +7,8 @@ function Browser() {
     const [searchedUser, setSearchedUser] = useState(null)
 
     const { user } = useParams()
+
+    const navigate = useNavigate()
 
     const inputRef = useRef(null) // Referencia al input
     const linkContainerRef = useRef(null) // Referencia para el contenedor del enlace
@@ -69,8 +71,21 @@ function Browser() {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if (searchedUser) {
+            navigate(`/${searchedUser.login}`)
+        } else {
+            return
+        }
+    }
+
     return (
-        <form className='relative z-30 mx-auto flex w-full max-w-xl items-center rounded-xl bg-custom-20293A px-4 shadow-md'>
+        <form
+            className='relative z-30 mx-auto flex w-full max-w-xl items-center rounded-xl bg-custom-20293A px-4 shadow-md'
+            onSubmit={(e) => handleSubmit(e)}
+        >
             <input
                 ref={inputRef}
                 type='text'
@@ -79,11 +94,14 @@ function Browser() {
                 value={query}
                 onChange={(e) => handleQuery(e)}
             />
-            <img
-                src={SearchIcon}
-                alt=''
-                className='h-full text-custom-4A5567'
-            />
+            <button type='submit'>
+                <img
+                    src={SearchIcon}
+                    alt=''
+                    className='h-full text-custom-4A5567'
+                />
+            </button>
+
             {searchedUser && query && (
                 <div
                     className='absolute left-0 top-[60px] z-30 w-full max-w-xl rounded-xl bg-custom-20293A p-4'

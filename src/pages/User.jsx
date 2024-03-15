@@ -8,15 +8,20 @@ function User() {
     const [userFollowers, setUserFollowers] = useState([])
     const [userFollowing, setUserFollowing] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [projectsLoader, setProjectsLoader] = useState(false)
+    const [followersLoader, setFollowersLoader] = useState(false)
+    const [followingLoader, setFollowingLoader] = useState(false)
 
     const { user } = useParams()
 
     useEffect(() => {
         const getAllData = async () => {
-            await getUserInfo(user)
-            getUserRepositories(user)
-            getUserFollowers(user)
-            getUserFollowing(user)
+            await Promise.all([
+                getUserInfo(user),
+                getUserRepositories(user),
+                getUserFollowers(user),
+                getUserFollowing(user)
+            ])
         }
 
         getAllData()
@@ -45,10 +50,10 @@ function User() {
     }
 
     const getUserRepositories = async (username) => {
-        setIsLoading(true)
+        setProjectsLoader(true)
         try {
             const response = await fetch(
-                `https://api.github.com/users/${username}/repos?sort=created&direction=desc?page=1&per_page=100`,
+                `https://api.github.com/users/${username}/repos?sort=created&direction=desc&page=1&per_page=100`,
                 {
                     headers: {
                         Authorization: `token ${token}`
@@ -60,15 +65,15 @@ function User() {
         } catch (error) {
             console.log(error)
         } finally {
-            setIsLoading(false)
+            setProjectsLoader(false)
         }
     }
 
     const getUserFollowers = async (username) => {
-        setIsLoading(true)
+        setFollowersLoader(true)
         try {
             const response = await fetch(
-                `https://api.github.com/users/${username}/followers`,
+                `https://api.github.com/users/${username}/followers?page=1&per_page=30`,
                 {
                     headers: {
                         Authorization: `token ${token}`
@@ -80,12 +85,12 @@ function User() {
         } catch (error) {
             console.log(error)
         } finally {
-            setIsLoading(false)
+            setFollowersLoader(false)
         }
     }
 
     const getUserFollowing = async (username) => {
-        setIsLoading(true)
+        setFollowingLoader(true)
         try {
             const response = await fetch(
                 `https://api.github.com/users/${username}/following`,
@@ -100,7 +105,7 @@ function User() {
         } catch (error) {
             console.log(error)
         } finally {
-            setIsLoading(false)
+            setFollowingLoader(false)
         }
     }
 
@@ -120,7 +125,10 @@ function User() {
                     userRepositories,
                     userFollowers,
                     isLoading,
-                    userFollowing
+                    userFollowing,
+                    projectsLoader,
+                    followersLoader,
+                    followingLoader
                 }}
             />
         </div>

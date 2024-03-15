@@ -5,7 +5,7 @@ function FollowerCard({ userFollower }) {
     return (
         <article
             key={userFollower.id}
-            className='rounded-lg bg-custom-111729 px-6 py-4 shadow-md'
+            className='rounded-lg bg-custom-111729 px-6 py-4 shadow-md transition-transform duration-100 hover:scale-110'
         >
             <Link
                 to={`/${userFollower.login}`}
